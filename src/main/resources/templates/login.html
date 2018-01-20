@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>登录</title>
+
+        <script src="../static/lib/jquery-3.2.1.min.js"></script>
+        <script src="/lib/jquery-3.2.1.min.js"></script>
+
+
+
+        <script src="../static/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+        <script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+        <link href="../static/lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+        <link href="/lib/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+
+        <script src="../static/lib/vue.js"></script>
+        <script src="/lib/vue.js"></script>
+
+</head>
+
+<body align="center">
+
+    <div class="panel panel-success">
+            <div class="panel-heading col-lg-12">
+                <h3 class="panel-title">
+                    登录
+                </h3>
+            </div>
+
+        <div class="panel-body col-lg-12">
+
+                    <form class="" action="/login" method="post">
+                        <div class="input-group">
+                            <span class="input-group-addon">名字</span>
+                            <input class="form-control" type="text" name="username" placeholder="请输入名字"/><br/>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon">密码</span>
+                            <input class="form-control" type="password" name="password" placeholder="请输入密码"/><br/>
+                        </div>
+                        <div class="" >
+                        <button class="btn" type="submit">登录</button>
+                        <div class="btn"><a href="./regist">注册</a></div>
+                        </div>
+                    </form>
+        </div>
+    </div>
+</body>
+</html>

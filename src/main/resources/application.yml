@@ -1,0 +1,22 @@
+server:
+  port: 5002
+
+spring:
+  application:
+    name: jia
+  datasource:
+    url: jdbc:mysql://139.199.17.156:3306/lostandfound
+    #url: jdbc:mysql://localhost:3306/lar
+    username: lost
+    password: lostandfound
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+        properties:
+          hibernate:
+            hbm2ddl:
+              auto: update
+
+  http:
+    multipart:
+      maxFileSize: 10Mb

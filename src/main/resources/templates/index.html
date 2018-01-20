@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+
+    <script type="application/javascript">
+        var stompClient;
+
+        var ws=new WebSocket("ws://localhost:5002/myHandler");
+        function nostompSend() {
+            console.log(" 发送信息")
+            ws.send("jiajunlong");
+        }
+        function connectBysockJs() {
+            var socket = new SockJS('/my-websocket'); //1
+            stompClient = Stomp.over(socket);//2
+            stompClient.connect({}, function(frame) {//3
+
+                console.log('开始进行连接Connected: ' + frame);
+                stompClient.subscribe('/topic/chat', function(respnose){ //4
+                    alert(respnose.data);
+                });
+            });
+        }
+        function connect() {
+            //var ws = new WebSocket("./my-websocket"); //1
+            //stompClient = Stomp.over(ws);//2
+            stompClient=Stomp.client("ws://localhost:5002/my-websocket");
+            stompClient.connect({}, function(frame) {//3
+
+                console.log('开始进行连接Connected: ' + frame);
+                stompClient.subscribe('/chat', function(respnose){ //4
+                    alert("olll")
+                    alert(respnose.data);
+                });
+            });
+        }
+        ws.onopen=function () {
+            // ws.send("we are ok");
+            console.info("连接成功");
+        }
+
+        ws.onmessage=function (msg) {
+            console.info(msg);
+            $("#webinfo").html(msg.data);
+        }
+        function chat() {
+            stompClient.send("/chartoserver", {},"fasong gei fuwuqi")
+        }
+
+    </script>
+</head>
+<body>
+<button onclick="connect()">没有socketjs</button>
+<button onclick="connectBysockJs()">socketjs连接</button>
+<button onclick="chat()"> 发送信息</button>
+<button onclick="nostompSend()"> 发送信息nostomp</button>
+
+<p id="webinfo">f</p>
+</body>
+</html>
