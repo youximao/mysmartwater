@@ -20,10 +20,11 @@ def on_open(ws):
     print("到 zhe")
     #print("zhe li")
     ws.send("jjj")
+    
 
 
 if __name__ == "__main__":
-    ws = websocket.WebSocketApp("ws://192.168.1.100:5002/myHandler",
+    ws = websocket.WebSocketApp("ws://192.168.1.107:5002/myHandler",
                                 on_message = on_message,
                                 on_error = on_error,
                                 on_close = on_close)

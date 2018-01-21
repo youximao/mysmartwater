@@ -1,6 +1,7 @@
 package com.iot.demo.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.iot.demo.service.IotserviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,8 +35,14 @@ public class IotCon {
     @ResponseBody
     public Object getSendPy(@PathVariable String str){
         handler.sendMessage(str);
+        return new JSONObject().put("info","ok");
+    }
 
-        return new JSONObject().put("result","ok");
+    @RequestMapping("/sendpyop")
+    @ResponseBody
+    public Object getSendPyOp(@RequestParam("op")String op){
+        handler.sendMessage(op);
+        return new JSONObject().put("info","ok");
     }
 
     @RequestMapping("/nowperson")
@@ -49,31 +56,19 @@ public class IotCon {
         return jsonObject;
     }
 
-
-    @RequestMapping("/upfile")
-    public String getUpFile(){return "upfile";}
-
-    @RequestMapping("/update")
+    @Autowired
+    IotserviceImpl iotservice;
+    @RequestMapping("/picurl")
     @ResponseBody
-    public Object updateImage(@RequestParam("file")MultipartFile file){
-
-        String sim=File.separator;
-        String path=".."+sim+file.getOriginalFilename();
-        File file1=new File(path);
-
-        try {
-            BufferedOutputStream bufferedInputStream=new BufferedOutputStream(new FileOutputStream(file1));
-            bufferedInputStream.write(file.getBytes());
-            bufferedInputStream.flush();
-            bufferedInputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public Object getPicUrl(){
         JSONObject jsonObject=new JSONObject();
-        jsonObject.put("result","okfile");
+
+        jsonObject.put("picurl",iotservice.getPicUrl());
+
+
         return jsonObject;
     }
+
+
+
 }

@@ -1,6 +1,7 @@
 
 import websocket
 import mywebsocket
+import requests
 
 
 
@@ -20,6 +21,7 @@ def on_open(ws):
     print("到 zhe")
     #print("zhe li")
     ws.send("jjj")
+    requests.get()
 
 
 if __name__ == "__main__":

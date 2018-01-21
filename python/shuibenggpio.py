@@ -11,6 +11,6 @@ def water(tt):
      GPIO.setup(gg, GPIO.OUT)    
      time.sleep(3)
      print("In")
-     GPIO.setup(gg, GPIO.IN)    
+     GPIO.setup(gg, GPIO.IN)
+     print("浇花完成")
      time.sleep(6)
-     print("浇花完成")    

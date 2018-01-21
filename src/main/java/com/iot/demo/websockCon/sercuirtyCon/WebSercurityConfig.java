@@ -36,7 +36,7 @@ public class WebSercurityConfig extends WebSecurityConfigurerAdapter{
 
 
         http.authorizeRequests().
-                antMatchers("/iot/**","/myHandler","/pysent/**","/js/**","/lib/**","/regist","/registuser", "/webjars/**", "/register", "/api/common/**", "/image/**").permitAll()
+                antMatchers("/myHandler","/pysent/**","/js/**","/lib/**","/regist","/registuser", "/webjars/**", "/register", "/api/common/**", "/image/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                     .formLogin().loginPage("/login").defaultSuccessUrl("/iot/iotcontroller", true).failureForwardUrl("/ee").permitAll()

@@ -12,6 +12,8 @@ import java.util.Map;
 @Component
 public class MyHandler extends TextWebSocketHandler {
 
+    public String myip;
+
     public HashMap<String,WebSocketSession> hashMap=new HashMap<String,WebSocketSession>();
 
     @Override
@@ -66,8 +68,21 @@ public class MyHandler extends TextWebSocketHandler {
 
         return hashMap;
     }
+    // 删除全部的
+    public Boolean delectAll(){
+        hashMap.clear();
+        return true;
+    }
     //获取当前在线的websocket
     public HashMap<String,WebSocketSession> getHashMap(){
         return this.hashMap;
+    }
+
+    public String getMyip() {
+        return myip;
+    }
+
+    public void setMyip(String myip) {
+        this.myip = myip;
     }
 }
